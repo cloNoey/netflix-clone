@@ -1,0 +1,40 @@
+:root {
+    --bg-color: #141414;
+    --text-primary-color: #ffffff;
+    --text-secondary-color: #767676;
+    
+    --spacing-8: 8px;
+    --spacing-16: 16px;
+    --spacing-24: 24px;
+    --spacing-32: 32px;
+    
+    --font-size-14: 14px;
+    --font-size-16: 16px;
+    --font-size-20: 20px;
+    --font-size-28: 28px;
+    --font-size-48: 48px;
+    
+    --page-width: 1440px;
+    --header-height: 72px;
+}
+
+* {
+    margin: 0;
+    margin-left: var(--spacing-16);
+    margin-right: var(--spacing-16);
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+}
+
+.page { width: var(--page-width); margin: 0 auto;}
+
+
+/* dummy data */
+main {
+    height: 2000px;
+    background-color: azure;
+    margin: 0;
+    padding: 0;
+}
+

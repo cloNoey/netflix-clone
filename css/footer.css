@@ -1,0 +1,22 @@
+.footer {
+    height: 180px;
+    width: 100%;
+    display: flex;
+    font-size: var(--font-size-14);
+    margin-top: var(--spacing-16);
+    margin-left: 0;
+    color: var(--text-secondary-color)
+}
+
+.footer-container {
+    margin: 0;
+}
+
+.footer-description {
+    margin:0;
+}
+
+.footer-description p {
+    margin: 0;
+    margin-top: 5px;
+}

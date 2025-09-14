@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix 클론</title>
+    <style>
+        /* CSS 변수 (디자인 토큰) */
+        :root {
+            --primary-color: #e50914;
+            --bg-color: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --card-bg: #181818;
+            --hover-bg: #333333;
+            
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            
+            --border-radius: 4px;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            
+            --font-size-sm: 14px;
+            --font-size-md: 16px;
+            --font-size-lg: 20px;
+            --font-size-xl: 28px;
+            --font-size-hero: 48px;
+            
+            --page-width: 1440px;
+            --header-height: 72px;
+        }
+
+        /* 기본 스타일 리셋 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .page {
+            width: var(--page-width);
+            margin: 0 auto;
+        }
+
+        /* 헤더 */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+            z-index: 1000;
+        }
+
+        .header-container {
+            width: var(--page-width);
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+
+        .logo {
+            color: var(--primary-color);
+            font-size: var(--font-size-xl);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: var(--font-size-md);
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a:focus {
+            color: var(--text-secondary);
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--text-primary);
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            border: none;
+        }
+
+        .nav-icon:hover,
+        .nav-icon:focus {
+            opacity: 0.7;
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* 메인 콘텐츠 */
+        .main {
+            padding-top: var(--header-height);
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1489599828948-98b6fac5c1b4?w=1440&h=600&fit=crop') center/cover;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 500px;
+            padding: 0 var(--spacing-lg);
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: var(--font-size-hero);
+            font-weight: bold;
+            margin-bottom: var(--spacing-sm);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-description {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-secondary);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .btn {
+            padding: 12px var(--spacing-md);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: var(--font-size-md);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .btn-primary {
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: var(--text-secondary);
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        .btn-secondary {
+            background-color: rgba(109, 109, 110, 0.7);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            background-color: rgba(109, 109, 110, 0.5);
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* 카테고리 섹션 */
+        .category-section {
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .category-title {
+            font-size: var(--font-size-xl);
+            font-weight: bold;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: var(--spacing-sm);
+        }
+
+        .card {
+            position: relative;
+            aspect-ratio: 2/3;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover,
+        .card:focus {
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: var(--spacing-sm);
+            color: var(--text-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover .card-overlay,
+        .card:focus .card-overlay {
+            opacity: 1;
+        }
+
+        .card-title {
+            font-size: var(--font-size-sm);
+            font-weight: bold;
+        }
+
+        /* 푸터 */
+        .footer {
+            background-color: var(--card-bg);
+            padding: var(--spacing-xl) var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-section h3 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            color: var(--text-primary);
+            outline: 1px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--hover-bg);
+            padding-top: var(--spacing-sm);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        /* 접근성 개선 */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* 키보드 포커스 개선 */
+        *:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* 미디어 쿼리 (접근성 고려) */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <nav class="nav-left" role="navigation" aria-label="주 네비게이션">
+                <a href="#" class="logo" aria-label="Netflix 홈페이지">NETFLIX</a>
+                <ul class="nav-menu">
+                    <li><a href="#">홈</a></li>
+                    <li><a href="#">TV 프로그램</a></li>
+                    <li><a href="#">영화</a></li>
+                    <li><a href="#">NEW! 요즘 대세 콘텐츠</a></li>
+                    <li><a href="#">내가 찜한 콘텐츠</a></li>
+                </ul>
+            </nav>
+            <div class="nav-right" role="navigation" aria-label="사용자 메뉴">
+                <button class="nav-icon" aria-label="검색"></button>
+                <button class="nav-icon" aria-label="알림"></button>
+                <button class="nav-icon" aria-label="사용자 프로필"></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main page" role="main">
+        <!-- 히어로 섹션 -->
+        <section class="hero" role="banner" aria-label="추천 콘텐츠">
+            <div class="hero-content">
+                <h1 class="hero-title">오징어 게임</h1>
+                <p class="hero-description">
+                    456명이 참가한 의문의 서바이벌 게임. 
+                    어린 시절 추억의 놀이가 생존을 건 게임이 되어 돌아왔다.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary" role="button">
+                        <span aria-hidden="true">▶</span> 재생
+                    </a>
+                    <a href="#" class="btn btn-secondary" role="button">
+                        <span aria-hidden="true">ℹ</span> 상세 정보
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 카테고리 섹션 1 -->
+        <section class="category-section" aria-labelledby="popular-title">
+            <h2 id="popular-title" class="category-title">지금 뜨는 콘텐츠</h2>
+            <div class="card-grid" role="list" aria-label="지금 뜨는 콘텐츠 목록">
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1489599828948-98b6fac5c1b4?w=300&h=450&fit=crop" alt="액션 블록버스터 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">액션 블록버스터</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1543536448-d209d2d13a1c?w=300&h=450&fit=crop" alt="로맨틱 코미디 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">로맨틱 코미디</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=300&h=450&fit=crop" alt="SF 드라마 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">SF 드라마</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=300&h=450&fit=crop" alt="스릴러 영화 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">스릴러 영화</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=300&h=450&fit=crop" alt="판타지 어드벤처 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">판타지 어드벤처</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=300&h=450&fit=crop" alt="다큐멘터리 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">다큐멘터리</h3>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 카테고리 섹션 2 -->
+        <section class="category-section" aria-labelledby="new-title">
+            <h2 id="new-title" class="category-title">새로 등록된 콘텐츠</h2>
+            <div class="card-grid" role="list" aria-label="새로 등록된 콘텐츠 목록">
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=300&h=450&fit=crop" alt="미스터리 시리즈 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">미스터리 시리즈</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=300&h=450&fit=crop" alt="히어로 무비 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">히어로 무비</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=300&h=450&fit=crop" alt="코미디 시리즈 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">코미디 시리즈</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=450&fit=crop" alt="호러 영화 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">호러 영화</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=300&h=450&fit=crop" alt="애니메이션 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">애니메이션</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=450&fit=crop" alt="범죄 드라마 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">범죄 드라마</h3>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 카테고리 섹션 3 -->
+        <section class="category-section" aria-labelledby="wishlist-title">
+            <h2 id="wishlist-title" class="category-title">내가 찜한 콘텐츠</h2>
+            <div class="card-grid" role="list" aria-label="내가 찜한 콘텐츠 목록">
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=450&fit=crop" alt="가족 영화 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">가족 영화</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&h=450&fit=crop" alt="음악 다큐 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">음악 다큐</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=300&h=450&fit=crop" alt="역사 드라마 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">역사 드라마</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=300&h=450&fit=crop" alt="스포츠 다큐 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">스포츠 다큐</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=300&h=450&fit=crop" alt="요리 쇼 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">요리 쇼</h3>
+                    </div>
+                </article>
+                <article class="card" role="listitem" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=300&h=450&fit=crop" alt="여행 프로그램 포스터">
+                    <div class="card-overlay">
+                        <h3 class="card-title">여행 프로그램</h3>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer page" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>회사 정보</h3>
+                <ul class="footer-links">
+                    <li><a href="#">회사 소개</a></li>
+                    <li><a href="#">채용 정보</a></li>
+                    <li><a href="#">보도 자료</a></li>
+                    <li><a href="#">투자자 정보</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>고객 지원</h3>
+                <ul class="footer-links">
+                    <li><a href="#">고객 센터</a></li>
+                    <li><a href="#">이용 약관</a></li>
+                    <li><a href="#">개인정보 처리방침</a></li>
+                    <li><a href="#">쿠키 설정</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>콘텐츠</h3>
+                <ul class="footer-links">
+                    <li><a href="#">상품권</a></li>
+                    <li><a href="#">미디어 센터</a></li>
+                    <li><a href="#">이용 가능한 디바이스</a></li>
+                    <li><a href="#">콘텐츠 이용등급</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>계정</h3>
+                <ul class="footer-links">
+                    <li><a href="#">계정 관리</a></li>
+                    <li><a href="#">멤버십 해지</a></li>
+                    <li><a href="#">결제 정보</a></li>
+                    <li><a href="#">Netflix 선물하기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Netflix Clone. 이 사이트는 학습 목적으로 제작되었습니다.</p>
+        </div>
+    </footer>
+</body>
+</html>

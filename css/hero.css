@@ -1,0 +1,58 @@
+.hero {
+    position: relative;
+    overflow: hidden;
+    height: 550px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-background {
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.777), transparent);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    margin-left: 100px;
+    background: none;
+    width: 310px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.hero-title {
+    font-size: var(--font-size-48);
+    background: none;
+}
+
+.hero-description {
+    font-size: 12px;
+    margin-top: 10px;
+    background: none;
+}
+
+.hero-buttons {
+    display: flex;
+    background: none;
+    margin-top: 10px;
+    gap: var(--spacing-16);
+}
+
+.btn-play {
+    padding: 5px;
+    background-color: rgba(255, 255, 255);
+}
+
+.btn-info {
+    padding: 5px;
+    background-color: rgb(180, 180, 180);
+}

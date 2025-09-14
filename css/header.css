@@ -9,7 +9,7 @@
 .header-container {
     width: var(--page-width);
     margin: 0 auto;
-    padding-right: var(--spacing-32);
+    padding: 0 var(--spacing-32);
     height: 100%;
     display: flex;
     align-items: center;
@@ -21,11 +21,8 @@
     display: flex;
     align-items: center;
     margin: 0;
-    gap: var(--spacing-8);
-}
-
-.left-menu {
-    margin: 0;
+    margin-left: var(--spacing-16);
+    gap: var(--spacing-32);
 }
 
 .left-menu ul {
@@ -34,25 +31,22 @@
     align-items: center;
 }
 
-.left-menu li {
-    margin: 0;
-}
-
 .left-menu a {
     text-decoration: none;
     color: var(--text-primary-color);
     font-size: var(--font-size-14);
     white-space: nowrap;
+    margin-left: var(--spacing-16);
+    margin-right: var(--spacing-16);
 }
 
 /* right header */
 .right-menu {
     display: flex;
     align-items: center;
-    margin-left: auto;
-    margin-right: var(--spacing-32);
+    margin-right: var(--spacing-16);
 }
 
 .right-menu img {
-    margin-right: var(--spacing-16);
+    margin-left: var(--spacing-32);
 }

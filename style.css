@@ -20,8 +20,6 @@
 
 * {
     margin: 0;
-    margin-left: var(--spacing-16);
-    margin-right: var(--spacing-16);
     padding: 0;
     box-sizing: border-box;
     background-color: var(--bg-color);
@@ -34,7 +32,8 @@
 main {
     height: 2000px;
     background-color: azure;
-    margin: 0;
+    margin-left: var(--spacing-32);
+    margin-right: var(--spacing-32);
     padding: 0;
 }
 

@@ -22,11 +22,10 @@
 .hero-content {
     position: relative;
     z-index: 2;
-    color: white;
+    color: var(--text-primary-color);
     margin-left: 100px;
     background: none;
-    width: 310px;
-    font-family: 'Courier New', Courier, monospace;
+    width: 300px;
 }
 
 .hero-title {
@@ -36,14 +35,14 @@
 
 .hero-description {
     font-size: 12px;
-    margin-top: 10px;
+    margin-top: var(--spacing-16);
     background: none;
 }
 
 .hero-buttons {
     display: flex;
     background: none;
-    margin-top: 10px;
+    margin-top: var(--spacing-16);
     gap: var(--spacing-16);
 }
 

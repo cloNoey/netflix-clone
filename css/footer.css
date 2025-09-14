@@ -3,13 +3,12 @@
     width: 100%;
     display: flex;
     font-size: var(--font-size-14);
-    margin-top: var(--spacing-16);
-    margin-left: 0;
+    margin: var(--spacing-16);
     color: var(--text-secondary-color)
 }
 
 .footer-container {
-    margin: 0;
+    margin-left: var(--spacing-16);
 }
 
 .footer-description {

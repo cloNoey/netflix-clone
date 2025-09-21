@@ -3,19 +3,19 @@
     --text-primary-color: #ffffff;
     --text-secondary-color: #767676;
     
-    --spacing-8: 8px;
-    --spacing-16: 16px;
-    --spacing-24: 24px;
-    --spacing-32: 32px;
+    --spacing-8: 0.5rem;
+    --spacing-16: 1rem;
+    --spacing-24: 1.5rem;
+    --spacing-32: 2rem;
     
-    --font-size-14: 14px;
-    --font-size-16: 16px;
-    --font-size-20: 20px;
-    --font-size-28: 28px;
-    --font-size-48: 48px;
+    --font-size-14: 0.875rem;
+    --font-size-16: 1rem;
+    --font-size-20: 1.25rem;
+    --font-size-28: 1.75rem;
+    --font-size-48: 3rem;
     
-    --page-width: 1440px;
-    --header-height: 72px;
+    --page-width: 90rem;
+    --header-height: 4.5rem;
 }
 
 * {
@@ -28,7 +28,7 @@
 .page { width: var(--page-width); margin: 0 auto;}
 
 main {
-    height: 1400px;
+    height: 80rem;
     margin-left: var(--spacing-32);
     margin-right: var(--spacing-32);
     padding: 0;

@@ -1,0 +1,58 @@
+.slide {
+  position: relative;  /* 추가 */
+}
+
+.like-button {
+  position: absolute;
+  top: 20px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 10;  /* z-index 증가 */
+}
+
+.like-count {
+  position: absolute;
+  top: 48px;  /* 좋아요 버튼 아래에 위치 */
+  right: 13.5px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.slide:hover .like-button,
+.slide:hover .like-count {
+  opacity: 1;
+}
+
+.like-button:hover {
+  transform: scale(1.1);
+  background: none;
+}
+
+
+/* 좋아요 애니메이션 */
+.like-button.liked {
+  animation: likeAnimation 0.3s ease-in-out;
+}
+
+@keyframes likeAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}

@@ -1,0 +1,165 @@
+{
+  "categories": {
+    "shinchan": {
+      "title": "짱구는 못말려",
+      "slides": [
+        "shin1",
+        "shin2",
+        "shin3",
+        "shin4",
+        "shin5",
+        "shin6",
+        "drama1",
+        "drama2",
+        "drama3",
+        "drama4",
+        "drama5",
+        "drama6",
+        "shin1",
+        "shin2",
+        "shin3",
+        "shin4"
+      ]
+    },
+    "ghibli": {
+      "title": "지브리",
+      "slides": [
+        "ghibli1",
+        "ghibli2",
+        "ghibli3",
+        "ghibli4",
+        "ghibli5",
+        "ghibli6",
+        "shin1",
+        "shin2"
+      ]
+    },
+    "netflix": {
+      "title": "넷플릭스에서",
+      "slides": [
+        "drama1",
+        "drama2",
+        "drama3",
+        "drama4",
+        "drama5",
+        "drama6",
+        "shin1",
+        "shin2",
+        "shin3",
+        "shin4",
+        "shin5",
+        "shin6"
+      ]
+    }
+  },
+  "movies": {
+    "shin1": {
+      "id": "shin1",
+      "title": "짱구는 못말려 1",
+      "imageUrl": "./images/shin-chan1.jpg",
+      "likeCount": 0
+    },
+    "shin2": {
+      "id": "shin2",
+      "title": "짱구는 못말려 2",
+      "imageUrl": "./images/shin-chan2.jpg",
+      "likeCount": 0
+    },
+    "shin3": {
+      "id": "shin3",
+      "title": "짱구는 못말려 3",
+      "imageUrl": "./images/shin-chan3.jpg",
+      "likeCount": 0
+    },
+    "shin4": {
+      "id": "shin4",
+      "title": "짱구는 못말려 4",
+      "imageUrl": "./images/shin-chan4.jpg",
+      "likeCount": 0
+    },
+    "shin5": {
+      "id": "shin5",
+      "title": "짱구는 못말려 5",
+      "imageUrl": "./images/shin-chan5.jpg",
+      "likeCount": 0
+    },
+    "shin6": {
+      "id": "shin6",
+      "title": "짱구는 못말려 6",
+      "imageUrl": "./images/shin-chan6.jpg",
+      "likeCount": 0
+    },
+    "drama1": {
+      "id": "drama1",
+      "title": "드라마 1",
+      "imageUrl": "./images/drama1.jpg",
+      "likeCount": 0
+    },
+    "drama2": {
+      "id": "drama2",
+      "title": "드라마 2",
+      "imageUrl": "./images/drama2.jpg",
+      "likeCount": 0
+    },
+    "drama3": {
+      "id": "drama3",
+      "title": "드라마 3",
+      "imageUrl": "./images/drama3.jpg",
+      "likeCount": 0
+    },
+    "drama4": {
+      "id": "drama4",
+      "title": "드라마 4",
+      "imageUrl": "./images/drama4.jpg",
+      "likeCount": 0
+    },
+    "drama5": {
+      "id": "drama5",
+      "title": "드라마 5",
+      "imageUrl": "./images/drama5.jpg",
+      "likeCount": 0
+    },
+    "drama6": {
+      "id": "drama6",
+      "title": "드라마 6",
+      "imageUrl": "./images/drama6.jpg",
+      "likeCount": 0
+    },
+    "ghibli1": {
+      "id": "ghibli1",
+      "title": "지브리 1",
+      "imageUrl": "./images/ghibli1.jpg",
+      "likeCount": 0
+    },
+    "ghibli2": {
+      "id": "ghibli2",
+      "title": "지브리 2",
+      "imageUrl": "./images/ghibli2.jpg",
+      "likeCount": 0
+    },
+    "ghibli3": {
+      "id": "ghibli3",
+      "title": "지브리 3",
+      "imageUrl": "./images/ghibli3.jpg",
+      "likeCount": 0
+    },
+    "ghibli4": {
+      "id": "ghibli4",
+      "title": "지브리 4",
+      "imageUrl": "./images/ghibli4.jpg",
+      "likeCount": 0
+    },
+    "ghibli5": {
+      "id": "ghibli5",
+      "title": "지브리 5",
+      "imageUrl": "./images/ghibli5.jpg",
+      "likeCount": 0
+    },
+    "ghibli6": {
+      "id": "ghibli6",
+      "title": "지브리 6",
+      "imageUrl": "./images/ghibli6.jpg",
+      "likeCount": 0
+    }
+  }
+}
